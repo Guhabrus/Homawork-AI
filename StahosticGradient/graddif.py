@@ -28,7 +28,7 @@ num_step = POINTS//BATCH
 def Minimize(y, x, step = 0.01):
     
     VAL = np.array([])
-    ARR = np.array([[k],[b]])
+    ARR = np.array([[],[]])
     for i in range(500):
 
         for n_batch in range(num_step):
@@ -42,9 +42,9 @@ def Minimize(y, x, step = 0.01):
             dk, db = type.gradient(loss, [k,b])
             k.assign_sub(step*dk)
             b.assign_sub(step*db)
-            VAL = np.append(VAL,ls(y_batch, f))
-            ARR = np.append(ARR, [[k],[b]], axis = 0)
-    
+        ARR = np.append(ARR, [[k],[b]], axis = 1)
+        VAL = np.append(VAL,ls(y_batch, f))
+        
     return k,b, VAL, ARR
 
 k, b, v, arr = Minimize(y,x)
@@ -54,20 +54,19 @@ plt.scatter(x,y1, s = 3)
 plt.scatter(x,k_tru*x+b_tru+shum, s = 3)
 plt.show()
 
-# fig = plt.figure()
-# ax_3d = fig.add_subplot(projection = '3d')
-# X,Y = np.meshgrid(arr[0], arr[1])
 
 
-# print(X)
-# # Z = np.array([])
-# # for i in range(500):
-# #     Z = np.append(Z, ls(y,x*X[i]+Y[i]))
-# # print('z = ',Z)
 
-# ax_3d.plot_surface(X,Y, Z , color = 'r', rstride = 5, cmap = 'plasma')
-# ax_3d.plot(arr[0], arr[1], v, color = 'k')
-# ax_3d.set_xlabel('x')
-# ax_3d.set_ylabel('y')
-# ax_3d.set_zlabel('z')
-# plt.show()
+fig = plt.figure()
+ax_3d = fig.add_subplot(projection = '3d')
+X,Y = np.meshgrid(arr[0], arr[1])
+XX,YY = np.meshgrid(x, v)
+
+
+
+ax_3d.plot_surface(X,Y, YY , color = 'r', rstride = 5, cmap = 'plasma')
+ax_3d.plot(arr[0], arr[1], v, color = 'k')
+ax_3d.set_xlabel('x')
+ax_3d.set_ylabel('y')
+ax_3d.set_zlabel('z')
+plt.show()
