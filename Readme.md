@@ -1,4 +1,5 @@
 ## ДЗ 2 (генераци 3D модели по 2D картинке)
+для работы использовал PIFuHD
 
 ![Иллюстрация к проекту](https://github.com/jon/coolproject/raw/master/img/Lada.jpg)
 
