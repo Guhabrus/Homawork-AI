@@ -7,4 +7,4 @@
 
 ### И собственно вот что получилось 
 
-[![Watch the video](https://github.com/jon/coolproject/raw/master/img/Lada.jpg)](https://github.com/Guhabrus/Homawork-AI/blob/2_DZ/img/beeeeeeetch)
+![Watch the video](https://github.com/Guhabrus/Homawork-AI/blob/2_DZ/img/beeeeeeetch.gif)
