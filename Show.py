@@ -9,23 +9,23 @@ import numpy as np
 img = Image.open("texture.jpg")
 
 # tex = TextureVisuals(image = img)
+name_model ="result_Lada2_256.obj"
 
-
-with open("girl.obj", 'r') as f:
+with open(name_model, 'r') as f:
     mesh_uv = trimesh.exchange.obj.load_obj(f)
 
 
 
 
-uv = mesh_uv['visual'].uv
+# uv = mesh_uv['visual'].uv
 # print(uv)
-
-mesh = trimesh.load("./girl.obj", process = False)
+# exit()
+mesh = trimesh.load(name_model, process = False)
 
 material = trimesh.visual.texture.SimpleMaterial(image=img)
 
-color_visuals = trimesh.visual.TextureVisuals(uv=uv, image=img, material=material)
-mesh=trimesh.Trimesh(vertices=mesh.vertices, faces=mesh.faces, visual=color_visuals, validate=True, process=False)
+# color_visuals = trimesh.visual.TextureVisuals(uv=uv, image=img, material=material)
+mesh=trimesh.Trimesh(vertices=mesh.vertices, faces=mesh.faces, validate=True, process=False)
 mesh.show()
 
 
