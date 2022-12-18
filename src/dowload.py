@@ -16,10 +16,10 @@ def dowload_file(_url = "", _out_name = "a.out", batch_size = 1024*1024, prefix_
 
                 if( batch):
                     file.write(batch)
-        print("download succes")
+        print("[DOWLOAD_FILE]---info---> download succes")
         return True
     except:
-        print("Пес, чё то пошло не по плану")
+        print("[DOWLOAD_FILE]---error---> Пес, чё то пошло не по плану")
         return False
 
 
@@ -28,13 +28,13 @@ def download_yandex(_token = "", _url = "", _out_file = "a.out" ):
     
     disk = yadisk.YaDisk(token=_token)
     if( not disk.check_token() ):
-        print(" Твоё токен гавно!!!")
+        print("[DOWLOAD_FILE]---error---> Твоё токен гавно!!!")
         return False
 
     try:
         disk.download(path_or_file= _out_file)
     except:
-        print("Сорян, но чет не получается скачать, хз почему")
+        print("[DOWLOAD_FILE]---error---> Сорян, но чет не получается скачать, хз почему")
         return False
     
     return True
